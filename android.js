@@ -13,10 +13,11 @@ var opcoes = {
 }
 
 //Content-type
-
+/*
 var html = 'nome=José'; //x-www-form-urlencoded
 var json = {nome: 'José'}
 var strJson = JSON.stringify(json);
+*/
 //http.get('http://localhost', function(res){
 var req = http.request(opcoes, function (res) {
     res.on('data', function (pedaco) {
@@ -27,6 +28,7 @@ var req = http.request(opcoes, function (res) {
     res.on('end', function () {
         var corpoResponse = Buffer.concat(buffer_corpo_response).toString();
         console.log(corpoResponse);
+        console.log(res.statusCode);
     });
 
     res.on('error', function () {
@@ -34,5 +36,5 @@ var req = http.request(opcoes, function (res) {
     });
 });
 
-req.write(strJson);
+//req.write(strJson);
 req.end();
